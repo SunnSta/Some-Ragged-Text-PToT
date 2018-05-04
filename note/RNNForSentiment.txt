@@ -1,0 +1,22 @@
+﻿### 构建词向量
+
+因为文本不能像图片像素一样进行卷积啊啥的处理，所以要把每个词转化为一个独一无二的向量。这些向量不是随便定的，而是按照单词的相似程度来构建，所以一开始要训练一个模型。
+心情复杂还要自己构建词向量是吗……
+“Google已经帮助我们在大规模数据集上训练出来了Word2Vec模型，包括1000亿个不同的词！在这个模型中，谷歌能创建300万个词向量，每个向量维度为300。”
+
+### 中文的语料库
+
+中文维基百科的打包文件地址：
+https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles.xml.bz2
+
+搜狗实验室的搜狗新闻语料库地址：
+ http://www.sogou.com/labs/resource/cs.php
+数据格式为：
+	<doc>
+	<url>页面URL</url>
+	<docno>页面ID</docno>
+	<contenttitle>页面标题</contenttitle>
+	<content>页面内容</content>
+	</doc>
+首先取出content里面的内容。
+
