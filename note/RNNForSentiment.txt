@@ -20,3 +20,7 @@ https://dumps.wikimedia.org/zhwiki/latest/zhwiki-latest-pages-articles.xml.bz2
 	</doc>
 首先取出content里面的内容。
 
+### LSTM训练的代码参考
+
+https://github.com/yongyehuang/Tensorflow-Tutorial
+

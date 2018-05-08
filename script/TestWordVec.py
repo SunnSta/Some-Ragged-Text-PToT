@@ -31,3 +31,4 @@ print("-----\n")
 
 # 输出词向量
 print(model.wv['风'])
+print("维度：", len(model.wv['李世民']))
