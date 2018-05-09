@@ -54,6 +54,15 @@ TrainModel.py
 【训练模型用】
 训练唐诗的感情分类的模型
 
+poetry_data3
+训练数据原始
+
+poetry_data_cut3
+处理过的训练数据
+
+poetry_label
+训练数据对应标签
+
 poetry_classify_model
 这一步训练出的模型
 
