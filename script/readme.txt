@@ -63,7 +63,13 @@ poetry_data_cut3
 poetry_label
 训练数据对应标签
 
-poetry_classify_model
+model文件夹
+poetry_classify_model等
 这一步训练出的模型
 
 ------------------------------------------------------------------------------------
+
+TestModel.py
+【测试模型用】
+测试看看训练的成果对不对
+心态不好了
