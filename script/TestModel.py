@@ -1,9 +1,6 @@
 import numpy as np
 import time
-import sys
-import os
 import tensorflow as tf
-import matplotlib.pyplot as pl
 from gensim.models import word2vec
 import jieba
 import re
