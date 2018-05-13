@@ -5,81 +5,84 @@
 	Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
 -->
 <html>
-	<head>
-		<title>Shi</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" href="../static/content/main.css" />
-	</head>
-	<body class="subpage">
+<head>
+    <title>Shi</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../static/content/main.css" />
+    <link rel="stylesheet" href="../static/content/custom.css" />
+</head>
+    <body class="subpage">
 
-		<!-- Header -->
-			<header id="header">
-				<div class="logo"><a href="output.html">Shi <span>by WuMeng ZhangYue ZhangYuyuan</span></a></div>
-				<a href="#menu">Menu</a>
-			</header>
+        <!-- Header -->
+        <header id="header">
+            <div class="logo"><a href="">Shi <span>by WuMeng ZhangYue ZhangYuyuan</span></a></div>
+            <a href="#menu">Menu</a>
+        </header>
 
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="input.html">Text</a></li>
-					<li><a href="output.html">Generate</a></li>
-				</ul>
-			</nav>
+        <!-- Nav -->
+        <nav id="menu">
+            <ul class="links">
+                <li><a href="{{ url_for('input')}}">Text</a></li>
+                <li><a href="{{ url_for('output')}}">Generate</a></li>
+            </ul>
+        </nav>
 
-		<!-- One -->
-			<section id="One" class="wrapper style3">
-				<div class="inner">
-					<header class="align-center">
-						<p>Sed amet nulla</p>
-						<h2>Poem & emotion</h2>
-					</header>
-				</div>
-			</section>
+        <!-- One -->
+        <section id="One" class="wrapper style3">
+            <div class="inner">
+                <header class="align-center">
+                    <p>Our Small Ragged Text Project</p>
+                    <h2>Poem & emotion</h2>
+                </header>
+            </div>
+        </section>
 
-		<!-- Main -->
-			<div id="main" class="container">
+        <!-- Main -->
+        <div id="main" class="container">
 
-				<!-- Elements -->
-					<h2 id="elements">Poem</h2>
-					<div class="row 200%">
-						<div class="12u 12u$(medium)">
+            <!-- Elements -->
+            <h2 id="elements">Poem</h2>
+            <div class="row 200%">
+                <div class="12u 12u$(medium)">
 
-							<!-- Form -->
-								<h3 >Put the poem into the text box.</h3>
-								<ul class="actions">
-									<li><a href="#" class="button special" style="position:absolute;left:80%;top:50%">Generate8</a></li>
-								</ul>
-										<!-- Break -->
-										<div class="12u$">
-											<textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
-										</div>	
-								<hr />
+                    <!-- Form -->
+                    <form id="show-form" action="{{ url_for('output') }}" name="ragtext" method="POST">                  
+                        <h3>Put the poem into the text box.</h3>
+                        <input class="button special" type="submit" value="Generate" id="generate-button" />
+                        <!-- Break -->
+                        <div class="12u$">
+                            <textarea name="message" id="message" placeholder="Enter your message" rows="6"></textarea>
+                        </div>
 
+                    </form>
 
-						</div>   
-					</div>
+                    <hr />
 
-			</div>
+                </div>
+            </div>
 
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="container">
-					<ul class="icons">
-						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-					</ul>
-				</div>
-			</footer>
+        </div>
 
-		<!-- Scripts -->
-			<script src="../static/scripts/jquery.min.js"></script>
-			<script src="../static/scripts/jquery.scrollex.min.js"></script>
-			<script src="../static/scripts/skel.min.js"></script>
-			<script src="../static/scripts/util.js"></script>
-			<script src="../static/scripts/main.js"></script>
+        <!-- Footer
+        <footer id="footer">
+            <div class="container">
+                <ul class="icons">
+                    <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                    <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                    <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                    <li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+                </ul>
+            </div>
+        </footer>
+        -->
 
-	</body>
+        <!-- Scripts -->
+        <script src="../static/scripts/jquery.min.js"></script>
+        <script src="../static/scripts/jquery.scrollex.min.js"></script>
+        <script src="../static/scripts/skel.min.js"></script>
+        <script src="../static/scripts/util.js"></script>
+        <script src="../static/scripts/main.js"></script>
+
+    </body>
 </html>

@@ -3,25 +3,131 @@ Routes and views for the flask application.
 """
 
 from datetime import datetime
-from flask import render_template
+from flask import render_template, flash, request
 from RagWeb import app
+from RagWeb import myform
+import numpy as np
+import time
+import tensorflow as tf
+from gensim.models import word2vec
+import jieba
+import re
+import os
+import random
+
+class global_var():
+    rag = ""
+    dict = [u"离愁", u"伤感", u"豪迈", u"励志", u"孤独", u"闺怨", u"悠闲", u"爱情"]
+
+# 判断感情的函数
+def GuessSentiment(instr):
+    time_length = 20 # 一首诗歌的词数（多删少补0）
+    vec_size = 100 # 一个词的维度
+    batch_size = 50
+
+    # 载入word2vec模型
+    fname = "word_vec_model"
+    model = word2vec.Word2Vec.load(fname)
+    vocabulary = model.wv.vocab
+
+    # 诗句预处理（分词）
+    s = re.sub(u"[，。（）！【】、“”？,.*?/·X《》‘’；：|1234567890  　]", u"", instr)
+    s = jieba.cut(s)
+    instr = u" ".join(s)
+
+    # 诗句转词向量
+    test_vec = [model.wv[word] for word in instr.split(" ") if word in vocabulary]
+    if np.sum(np.sum(test_vec)) == 0:
+        return u"未知"
+    # 诗句长度标准化
+    # feature是一个time_length的……所以嗯，如果之后有问题……把它改成二维的长度为1*time_length的？
+    feature = test_vec[:time_length] if len(test_vec) > time_length else [np.zeros(vec_size)] * (time_length - len(test_vec)) + test_vec
+    f = np.array([feature])
+    
+    # 算是测试？
+    with tf.Session() as sess:
+        ## 检查错误
+        #print(type(feature))
+        #print(type(np.array(feature)))
+        #print(type(np.array([feature])))
+    
+        # 导入模型
+        new_saver = tf.train.import_meta_graph("model/poetry_classify_model.meta")
+        new_saver.restore(sess, "model/poetry_classify_model")
+
+        # 导入各个……那个叫啥……之前的小变量们？
+        # tf.get_collection() 返回一个list.  但是这里只要第一个参数即可
+        inputs_ = tf.get_collection('inputs')[0]
+        labels_ = tf.get_collection('labels')[0]
+        keep_prob_ = tf.get_collection('keep_prob')[0]
+        batch_size_ = tf.get_collection('batch_size')[0]
+        y_pre = tf.get_collection('my_network')[0]
+        graph = tf.get_default_graph()
+
+        # 抱歉这几个好像不用哦
+        #cross_entropy = tf.get_collection('cross_entropy')[0]
+        #accuracy = tf.get_collection('accuracy')
+
+        # 使用y进行预测
+        predict = sess.run(y_pre, feed_dict={inputs_: f, keep_prob_: 1.0, batch_size_: 1})
+        # 输出预测为1的标签索引位置
+        p = sess.run(tf.argmax(predict, 1))
+
+        ## 好像是另一种写法
+        #predict = y_pre.eval(feed_dict={inputs_: f, keep_prob_:1.0, batch_size_:
+        #1})
+        print(u"预测结果：%s" % global_var.dict[p[0]])
+        return p[0]
 
 @app.route('/')
 @app.route('/input')
-def home():
+def input():
     """Renders the home page."""
+    # form = myform.message_form()
+    # print("Text:", rag)
     return render_template(
         'input.html',
-        title='Home Page',
+        title='Input',
         year=datetime.now().year,
     )
 
-@app.route('/output')
-def about():
-    """Renders the about page."""
+@app.route('/output', methods=['GET', 'POST'])
+def output():
+    """Renders the output page.""" 
+    music = ["", "", "", "", ""]
+    name = [u"未知", u"未知", u"未知", u"未知", u"未知"]
+
+    # 获得诗句
+    if request.method == "POST":
+        global_var.rag = request.values.get('message')
+        print("Get text:", global_var.rag)
+
+    # 判断感情
+    if global_var.rag != "":
+        message = global_var.dict[GuessSentiment(global_var.rag)]
+    else:
+        message = u"未知"
+
+    # 挑选歌曲
+    if message != u"未知":
+        pre_path = os.getcwd() + "/RagWeb/static/music/" + message
+        allfile = os.listdir(pre_path)
+        music = []
+        name = []
+        for i in range(0,5):
+            index = random.randint(0, len(allfile)-1)
+            name.append(os.path.splitext(allfile[index])[0])
+            music.append(pre_path+"/"+allfile[index])
+    
+    # 检查
+    print(name)
+    print(music)
+
     return render_template(
         'output.html',
-        title='About',
+        title='Output',
         year=datetime.now().year,
-        message='Your application description page.'
+        message = message,
+        music = music,
+        name = name
     )

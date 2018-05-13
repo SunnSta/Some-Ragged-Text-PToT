@@ -11,91 +11,94 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="../static/content/main.css" />
 	</head>
-	<body>
+    <body>
+        <audio src="{{ music[0] }}"></audio>
+        <audio src="{{ music[1] }}"></audio>
+        <audio src="{{ music[2] }}"></audio>
+        <audio src="{{ music[3] }}"></audio>
+        <audio src="{{ music[4] }}"></audio>
 
-		<!-- Header -->
-			<header id="header" class="alt">
-				<div class="logo"><a href="index.html">Shi <span>by WuMeng ZhangYue ZhangYuyuan</span></a></div>
-				<a href="#menu">Menu</a>
-			</header>
+        <!-- Header -->
+        <header id="header" class="alt">
+            <div class="logo"><a href="">Shi <span>by WuMeng ZhangYue ZhangYuyuan</span></a></div>
+            <a href="#menu">Menu</a>
+        </header>
 
-		<!-- Nav -->
-			<nav id="menu">
-				<ul class="links">
-					<li><a href="input.html">Text</a></li>
-					<li><a href="output.html">Generate</a></li>
-				</ul>
-			</nav>
+        <!-- Nav -->
+        <nav id="menu">
+            <ul class="links">
+                <li><a href="{{ url_for('input') }}">Text</a></li>
+                <li><a href="{{ url_for('output') }}">Generate</a></li>
+            </ul>
+        </nav>
 
-		<!-- Banner -->
-			<section class="banner full">
-				<article>
-					<img src="images/slide01.jpg" alt="" />
-					<div class="inner">
-						<header>
-							<p>A free responsive web site template by <a href="https://templated.co">TEMPLATED</a></p>
-							<h2>Hielo</h2>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="images/slide02.jpg" alt="" />
-					<div class="inner">
-						<header>
-							<p>Lorem ipsum dolor sit amet nullam feugiat</p>
-							<h2>Magna etiam</h2>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="images/slide03.jpg"  alt="" />
-					<div class="inner">
-						<header>
-							<p>Sed cursus aliuam veroeros lorem ipsum nullam</p>
-							<h2>Tempus dolor</h2>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="images/slide04.jpg"  alt="" />
-					<div class="inner">
-						<header>
-							<p>Adipiscing lorem ipsum feugiat sed phasellus consequat</p>
-							<h2>Etiam feugiat</h2>
-						</header>
-					</div>
-				</article>
-				<article>
-					<img src="images/slide05.jpg"  alt="" />
-					<div class="inner">
-						<header>
-							<p>Ipsum dolor sed magna veroeros lorem ipsum</p>
-							<h2>Lorem adipiscing</h2>
-						</header>
-					</div>
-				</article>
-			</section>
+        <!-- Banner -->
+        <section class="banner full">
+            <article>
+                <img src="../static/images/slide01.jpg" alt="" />
+                <div class="inner">
+                    <header>
+                        <p>{{ message }}</p>
+                        <h3> {{ name[0] }}</h3>
+                    </header>
+                </div>
+            </article>
+            <article>
+                <img src="../static/images/slide02.jpg" alt="" />
+                <div class="inner">
+                    <header>
+                        <p>{{ message }}</p>
+                        <h3>{{ name[1] }}</h3>
+                    </header>
+                </div>
+            </article>
+            <article>
+                <img src="../static/images/slide03.jpg" alt="" />
+                <div class="inner">
+                    <header>
+                        <p>{{ message }}</p>
+                        <h3>{{ name[2] }}</h3>
+                    </header>
+                </div>
+            </article>
+            <article>
+                <img src="../static/images/slide04.jpg" alt="" />
+                <div class="inner">
+                    <header>
+                        <p>{{ message }}</p>
+                        <h3>{{ name[3] }}</h3>
+                    </header>
+                </div>
+            </article>
+            <article>
+                <img src="../static/images/slide05.jpg" alt="" />
+                <div class="inner">
+                    <header>
+                        <p>{{ message }}</p>
+                        <h3>{{ name[4] }}</h3>
+                    </header>
+                </div>
+            </article>
+        </section>
 
+        <!-- Footer
+    <footer id="footer">
+        <div class="container">
+            <ul class="icons">
+                <li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+            </ul>
+        </div>
+    </footer>
+    -->
+        <!-- Scripts -->
+        <script src="../static/scripts/jquery.min.js"></script>
+        <script src="../static/scripts/jquery.scrollex.min.js"></script>
+        <script src="../static/scripts/skel.min.js"></script>
+        <script src="../static/scripts/util.js"></script>
+        <script src="../static/scripts/main.js"></script>
 
-
-		<!-- Footer -->
-			<footer id="footer">
-				<div class="container">
-					<ul class="icons">
-						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-						<li><a href="#" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
-					</ul>
-				</div>
-			</footer>
-
-		<!-- Scripts -->
-			<script src="../static/scripts/jquery.min.js"></script>
-			<script src="../static/scripts/jquery.scrollex.min.js"></script>
-			<script src="../static/scripts/skel.min.js"></script>
-			<script src="../static/scripts/util.js"></script>
-			<script src="../static/scripts/main.js"></script>
-
-	</body>
+    </body>
 </html>
