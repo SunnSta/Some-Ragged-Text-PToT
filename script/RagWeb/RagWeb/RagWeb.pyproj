@@ -49,6 +49,7 @@
     <Content Include="RagWeb\static\scripts\jquery.min.js" />
     <Content Include="RagWeb\static\scripts\jquery.scrollex.min.js" />
     <Content Include="RagWeb\static\scripts\main.js" />
+    <Content Include="RagWeb\static\scripts\music.js" />
     <Content Include="RagWeb\static\scripts\skel.min.js" />
     <Content Include="RagWeb\static\scripts\util.js" />
     <Content Include="RagWeb\templates\input.html" />
