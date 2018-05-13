@@ -111,13 +111,14 @@ def output():
     # 挑选歌曲
     if message != u"未知":
         pre_path = os.getcwd() + "/RagWeb/static/music/" + message
+        pre_path1 = "../static/music/" + message
         allfile = os.listdir(pre_path)
         music = []
         name = []
         for i in range(0,5):
             index = random.randint(0, len(allfile)-1)
             name.append(os.path.splitext(allfile[index])[0])
-            music.append(pre_path+"/"+allfile[index])
+            music.append(pre_path1+"/"+allfile[index])
     
     # 检查
     print(name)

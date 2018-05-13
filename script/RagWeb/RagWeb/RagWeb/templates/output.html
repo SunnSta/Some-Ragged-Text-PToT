@@ -12,11 +12,11 @@
 		<link rel="stylesheet" href="../static/content/main.css" />
 	</head>
     <body>
-        <audio src="{{ music[0] }}"></audio>
-        <audio src="{{ music[1] }}"></audio>
-        <audio src="{{ music[2] }}"></audio>
-        <audio src="{{ music[3] }}"></audio>
-        <audio src="{{ music[4] }}"></audio>
+        <audio id="msc0" loop="loop" src="{{ music[0] }}" autoplay ="autoplay"></audio>
+        <audio id="msc1" loop="loop" src="{{ music[1] }}"></audio>
+        <audio id="msc2" loop="loop" src="{{ music[2] }}"></audio>
+        <audio id="msc3" loop="loop" src="{{ music[3] }}"></audio>
+        <audio id="msc4" loop="loop" src="{{ music[4] }}"></audio>
 
         <!-- Header -->
         <header id="header" class="alt">
@@ -39,7 +39,7 @@
                 <div class="inner">
                     <header>
                         <p>{{ message }}</p>
-                        <h3> {{ name[0] }}</h3>
+                        <h3 id="name0"> {{ name[0] }}</h3>
                     </header>
                 </div>
             </article>
@@ -48,7 +48,7 @@
                 <div class="inner">
                     <header>
                         <p>{{ message }}</p>
-                        <h3>{{ name[1] }}</h3>
+                        <h3 id="name1">{{ name[1] }}</h3>
                     </header>
                 </div>
             </article>
@@ -57,7 +57,7 @@
                 <div class="inner">
                     <header>
                         <p>{{ message }}</p>
-                        <h3>{{ name[2] }}</h3>
+                        <h3 id="name2">{{ name[2] }}</h3>
                     </header>
                 </div>
             </article>
@@ -66,7 +66,7 @@
                 <div class="inner">
                     <header>
                         <p>{{ message }}</p>
-                        <h3>{{ name[3] }}</h3>
+                        <h3 id="name3">{{ name[3] }}</h3>
                     </header>
                 </div>
             </article>
@@ -75,7 +75,7 @@
                 <div class="inner">
                     <header>
                         <p>{{ message }}</p>
-                        <h3>{{ name[4] }}</h3>
+                        <h3 id="name4">{{ name[4] }}</h3>
                     </header>
                 </div>
             </article>
@@ -99,6 +99,7 @@
         <script src="../static/scripts/skel.min.js"></script>
         <script src="../static/scripts/util.js"></script>
         <script src="../static/scripts/main.js"></script>
+        <script src="../static/scripts/music.js"></script>
 
     </body>
 </html>
