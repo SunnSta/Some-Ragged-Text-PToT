@@ -38,7 +38,7 @@ def GuessSentiment(instr):
     # 诗句转词向量
     test_vec = [model.wv[word] for word in instr.split(" ") if word in vocabulary]
     if np.sum(np.sum(test_vec)) == 0:
-        return u"未知"
+        return -1 #  未知
     # 诗句长度标准化
     # feature是一个time_length的……所以嗯，如果之后有问题……把它改成二维的长度为1*time_length的？
     feature = test_vec[:time_length] if len(test_vec) > time_length else [np.zeros(vec_size)] * (time_length - len(test_vec)) + test_vec
@@ -104,7 +104,11 @@ def output():
 
     # 判断感情
     if global_var.rag != "":
-        message = global_var.dict[GuessSentiment(global_var.rag)]
+        result = GuessSentiment(global_var.rag)
+        if result == -1:
+            message = u"未知"
+        else:
+            message = global_var.dict[result]
     else:
         message = u"未知"
 
