@@ -114,8 +114,8 @@ def output():
 
     # 挑选歌曲
     if message != u"未知":
-        pre_path = os.getcwd() + "/RagWeb/static/music/" + message
-        pre_path1 = "../static/music/" + message
+        pre_path = os.getcwd() + "/RagWeb/static/music/" + message #绝对位置
+        pre_path1 = "../static/music/" + message #相对位置
         allfile = os.listdir(pre_path)
         music = []
         name = []
@@ -124,6 +124,22 @@ def output():
             name.append(os.path.splitext(allfile[index])[0])
             music.append(pre_path1+"/"+allfile[index])
     
+    # 挑选图片
+    pic = []
+    if message != u"未知":
+        img_pre_path = os.getcwd() + "/RagWeb/static/images/image/" + message #绝对位置
+        img_pre_path1 = "../static/images/image/" + message #相对位置
+    else:
+        img_pre_path = os.getcwd() + "/RagWeb/static/images" #绝对位置
+        img_pre_path1 = "../static/images" #相对位置
+
+    img_allfile = os.listdir(img_pre_path)
+        
+    for i in range(0,5):
+        img_index = random.randint(0, len(img_allfile)-1)
+        pic.append(img_pre_path1+"/"+img_allfile[img_index])
+
+
     # 检查
     print(name)
     print(music)
@@ -134,5 +150,6 @@ def output():
         year=datetime.now().year,
         message = message,
         music = music,
-        name = name
+        name = name,
+        pic = pic
     )

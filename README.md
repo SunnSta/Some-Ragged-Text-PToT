@@ -1,9 +1,9 @@
 ﻿# Some-Ragged-Text-PToT
 
-组队信息：___ __ （这里留个两链接位置）三人组  
+组队信息：@sanweie @
 项目名称：RaggedText  
 项目简介：诗歌的音乐的情感匹配  
-
+项目若有更新，见https://github.com/SunnSta/Some-Ragged-Text-PToT
 
 使用方式：  
 1.进入虚拟环境  
