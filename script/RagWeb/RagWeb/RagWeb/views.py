@@ -31,12 +31,17 @@ def GuessSentiment(instr):
     vocabulary = model.wv.vocab
 
     # 诗句预处理（分词）
-    s = re.sub(u"[，。（）！【】、“”？,.*?/·X《》‘’；：|1234567890  　]", u"", instr)
+    s = re.sub(u"[1234567890X]", u"", instr) # 直接省略某些符号
+    s = re.sub(u"[，。（）！【】、“”？,.*?/·《》‘’；：|  　]", u" ", s) # 全都变成分隔符
+    s = s.replace("\r\n"," ") # 换行变成分隔符，天哪换行回车windows这个编码有毒啊调了半天
     s = jieba.cut(s)
-    instr = u" ".join(s)
-
+    s1 = u" ".join(s)
+    s1 = s1.replace("   "," ") # 不明白分词之后为啥老是出现三个空格，分词把我的空格也当作词语了
+    print(u"分词结果:")
+    print(s1)
+    
     # 诗句转词向量
-    test_vec = [model.wv[word] for word in instr.split(" ") if word in vocabulary]
+    test_vec = [model.wv[word] for word in s1.split(" ") if word in vocabulary]
     if np.sum(np.sum(test_vec)) == 0:
         return -1 #  未知
     # 诗句长度标准化
@@ -50,7 +55,8 @@ def GuessSentiment(instr):
         #print(type(feature))
         #print(type(np.array(feature)))
         #print(type(np.array([feature])))
-    
+        
+
         # 导入模型
         new_saver = tf.train.import_meta_graph("model/poetry_classify_model.meta")
         new_saver.restore(sess, "model/poetry_classify_model")
